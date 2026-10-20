@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10110f">
+<title>REPUBLIC® — Built Different</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --acid: #E3EF4F;
+  --black: #10110F;
+  --white: #F5F5F0;
+  --gray: #85867D;
+  --line: rgba(255,255,255,.13);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: .12;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.container {
+  width: min(1320px, 90%);
+  margin: auto;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-left: 50px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: var(--acid);
+  border-radius: 50%;
+}
+
+/* NAVIGATION */
+
+.navbar {
+  position: absolute;
+  z-index: 20;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  min-height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.logo {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 31px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.logo span {
+  color: var(--acid);
+}
+
+.logo small {
+  display: block;
+  font: 700 8px "DM Sans", sans-serif;
+  letter-spacing: 3px;
+  color: var(--gray);
+  margin-top: -4px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-links a {
+  color: #B6B7B0;
+  font-size: 11px;
+  font-weight: 700;
+  transition: color .25s;
+}
+
+.nav-links a:hover {
+  color: var(--acid);
+}
+
+.nav-cta {
+  padding: 14px 20px;
+  background: var(--acid);
+  color: var(--black);
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  transition: .3s;
+}
+
+.nav-cta:hover {
+  background: white;
+  transform: translateY(-2px);
+}
+
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 790px;
+  height: min(950px, 100svh);
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, #10110f 0%, rgba(16,17,15,.98) 25%, rgba(16,17,15,.62) 52%, rgba(16,17,15,.15) 100%),
+    linear-gradient(0deg, #10110f 0%, transparent 27%, transparent 80%, rgba(16,17,15,.5) 100%),
+    url("https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=2000&q=90") center 35% / cover;
+  transform: scale(1.04);
+  animation: heroZoom 12s ease-out forwards;
+}
+
+@keyframes heroZoom {
+  to { transform: scale(1); }
+}
+
+.hero-outline {
+  position: absolute;
+  right: 2%;
+  top: 12%;
+  font: 900 clamp(220px, 34vw, 520px)/.8 "Barlow Condensed", sans-serif;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(227,239,79,.18);
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 85px;
+  width: 100%;
+}
+
+.hero .eyebrow {
+  margin-bottom: 26px;
+  animation: rise .8s both;
+}
+
+.hero h1 {
+  font: 900 clamp(90px, 13.5vw, 190px)/.76 "Barlow Condensed", sans-serif;
+  letter-spacing: -6px;
+  text-transform: uppercase;
+  max-width: 850px;
+  animation: rise .9s .1s both;
+  margin-left: 30px;
+}
+
+.hero h1 .accent {
+  color: var(--acid);
+  display: block;
+}
+
+.hero h1 .outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--white);
+}
+
+.hero-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 25px;
+  max-width: 800px;
+  margin-top: 38px;
+  animation: rise .9s .2s both;
+}
+
+.hero-description {
+  color: #000000;
+  font-size: 13px;
+  line-height: 1.9;
+  max-width: 290px;
+  margin-left: 10px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  padding: 18px 23px;
+  background: var(--acid);
+  color: var(--black);
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  transition: .3s;
+}
+
+.btn:hover {
+  background: white;
+  transform: translateY(-3px);
+}
+
+.text-link {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  border-bottom: 1px solid #777;
+  padding: 12px 0;
+}
+
+.hero-index {
+  position: absolute;
+  right: 5%;
+  bottom: 115px;
+  z-index: 2;
+  font: 800 12px "DM Sans", sans-serif;
+  letter-spacing: 2px;
+}
+
+.hero-index span {
+  color: var(--acid);
+}
+
+.hero-side-label {
+  position: absolute;
+  right: 25px;
+  top: 43%;
+  writing-mode: vertical-rl;
+  color: rgba(255,255,255,.6);
+  font-size: 9px;
+  letter-spacing: 4px;
+}
+
+.hero-scroll {
+  position: absolute;
+  left: 5%;
+  bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-size: 9px;
+  color: var(--gray);
+  letter-spacing: 2px;
+}
+
+.scroll-line {
+  width: 45px;
+  height: 1px;
+  background: var(--acid);
+}
+
+/* MARQUEE */
+
+.marquee {
+  background: var(--acid);
+  color: var(--black);
+  overflow: hidden;
+  transform: rotate(-1.2deg) scale(1.02);
+  position: relative;
+  z-index: 4;
+  margin: -2px 0;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-item {
+  font: 900 24px "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  padding: 18px 22px;
+  white-space: nowrap;
+}
+
+.marquee-item span {
+  margin-left: 25px;
+  font-size: 18px;
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* INTRO */
+
+.section {
+  padding: 130px 0;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 65px;
+}
+
+.section-title {
+  font: 800 clamp(48px, 7vw, 90px)/.9 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  margin-top: 22px;
+}
+
+.section-title span {
+  color: var(--acid);
+}
+
+.section-copy {
+  max-width: 300px;
+  color: var(--gray);
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.stat {
+  padding: 30px 20px 30px 0;
+  border-right: 1px solid var(--line);
+}
+
+.stat:first-child {
+  border-right: 0;
+}
+
+.stat-number {
+  font: 800 clamp(38px, 5vw, 66px)/1 "Barlow Condensed", sans-serif;
+  color: var(--acid);
+}
+
+.stat-label {
+  color: var(--gray);
+  font-size: 10px;
+  margin-top: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* PROGRAMS */
+
+.programs {
+  background: #171815;
+}
+
+.program-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.program-card {
+  min-height: 430px;
+  position: relative;
+  overflow: hidden;
+  background: #252620;
+  isolation: isolate;
+}
+
+.program-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .65;
+  transition: transform .7s, opacity .4s;
+  z-index: -2;
+}
+
+.program-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(0deg, rgba(10,11,9,.97), transparent 80%);
+}
+
+.program-card:hover img {
+  transform: scale(1.07);
+  opacity: .85;
+}
+
+.program-number {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  font: 800 13px "DM Sans", sans-serif;
+  color: var(--acid);
+}
+
+.program-content {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  right: 25px;
+}
+
+.program-content h3 {
+  font: 800 44px/.95 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+}
+
+.program-content p {
+  color: #B9B9B1;
+  font-size: 11px;
+  line-height: 1.8;
+  margin-top: 14px;
+  max-width: 280px;
+}
+
+.program-arrow {
+  position: absolute;
+  right: 25px;
+  bottom: 30px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background: var(--acid);
+  color: var(--black);
+  font-size: 20px;
+  transition: .3s;
+}
+
+.program-card:hover .program-arrow {
+  transform: rotate(-45deg);
+}
+
+/* MANIFESTO */
+
+.manifesto {
+  position: relative;
+  padding: 140px 0;
+  overflow: hidden;
+}
+
+.manifesto-bg {
+  position: absolute;
+  inset: 0;
+  opacity: .17;
+  background:
+    linear-gradient(90deg, #10110f 5%, transparent 100%),
+    url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=85") center/cover;
+}
+
+.manifesto-content {
+  position: relative;
+  max-width: 1050px;
+}
+
+.manifesto h2 {
+  font: 900 clamp(55px, 10vw, 130px)/.88 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -3px;
+}
+
+.manifesto h2 span {
+  color: var(--acid);
+}
+
+.manifesto p {
+  max-width: 420px;
+  margin-top: 30px;
+  color: #B8B9B0;
+  font-size: 13px;
+  line-height: 2;
+}
+
+/* MEMBERSHIP */
+
+.membership-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.price-card {
+  border: 1px solid var(--line);
+  padding: 32px 25px;
+  position: relative;
+  transition: border-color .3s, transform .3s;
+}
+
+.price-card:hover {
+  border-color: var(--acid);
+  transform: translateY(-5px);
+}
+
+.price-card.featured {
+  background: var(--acid);
+  color: var(--black);
+  border-color: var(--acid);
+}
+
+.price-tag {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 8px 10px;
+  background: rgba(255,255,255,.08);
+}
+
+.featured .price-tag {
+  background: var(--black);
+  color: var(--acid);
+}
+
+.price-card h3 {
+  font: 800 32px "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  margin-top: 27px;
+}
+
+.price {
+  font: 800 55px "Barlow Condensed", sans-serif;
+  margin: 15px 0 5px;
+}
+
+.price small {
+  font: 500 11px "DM Sans", sans-serif;
+}
+
+.price-desc {
+  color: var(--gray);
+  font-size: 11px;
+}
+
+.featured .price-desc {
+  color: #454A22;
+}
+
+.price-features {
+  list-style: none;
+  margin: 30px 0;
+  border-top: 1px solid var(--line);
+}
+
+.featured .price-features {
+  border-color: rgba(0,0,0,.17);
+}
+
+.price-features li {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 11px;
+}
+
+.featured .price-features li {
+  border-color: rgba(0,0,0,.17);
+}
+
+.price-features li::before {
+  content: "↗";
+  color: var(--acid);
+  margin-right: 10px;
+}
+
+.featured .price-features li::before {
+  color: var(--black);
+}
+
+.price-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid var(--line);
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  transition: .3s;
+}
+
+.price-button:hover {
+  background: var(--acid);
+  color: var(--black);
+}
+
+.featured .price-button {
+  border-color: var(--black);
+  background: var(--black);
+  color: white;
+}
+
+.featured .price-button:hover {
+  background: white;
+  color: var(--black);
+  border-color: white;
+}
+
+/* FINAL CTA */
+
+.final-cta {
+  padding: 30px 0 100px;
+}
+
+.cta-box {
+  background: var(--acid);
+  color: var(--black);
+  padding: 65px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-box::after {
+  content: "R";
+  position: absolute;
+  right: 33%;
+  top: -110px;
+  font: 900 360px "Barlow Condensed", sans-serif;
+  color: rgba(0,0,0,.055);
+  pointer-events: none;
+}
+
+.cta-box h2 {
+  font: 900 clamp(48px, 7vw, 85px)/.85 "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-box p {
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+.cta-button {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  gap: 30px;
+  padding: 19px 23px;
+  background: var(--black);
+  color: white;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  transition: .3s;
+}
+
+.cta-button:hover {
+  background: white;
+  color: var(--black);
+}
+
+/* FOOTER */
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 35px 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-note {
+  color: var(--gray);
+  font-size: 10px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  font-size: 10px;
+  color: #B5B6AE;
+}
+
+/* ANIMATION */
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity .8s, transform .8s;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .nav-links {
+    gap: 18px;
+  }
+
+  .hero {
+    min-height: 720px;
+  }
+
+  .hero h1 {
+    font-size: clamp(85px, 15vw, 140px);
+  }
+
+  .program-card {
+    min-height: 360px;
+  }
+
+  .program-content h3 {
+    font-size: 35px;
+  }
+
+  .cta-box {
+    padding: 45px 30px;
+  }
+}
+
+@media (max-width: 650px) {
+  .container {
+    width: 90%;
+  }
+
+  .nav-inner {
+    min-height: 72px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-cta {
+    display: none;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: #171815;
+    padding: 25px 5%;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero {
+    min-height: 750px;
+    height: 95svh;
+    max-height: 900px;
+  }
+
+  .hero-bg {
+    background:
+      linear-gradient(90deg, rgba(16,17,15,.65), rgba(16,17,15,.2)),
+      linear-gradient(0deg, #10110f 0%, rgba(16,17,15,.45) 50%, rgba(16,17,15,.5) 100%),
+      url("https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1000&q=85") 58% center/cover;
+  }
+
+  .hero-content {
+    padding-top: 75px;
+  }
+
+  .hero h1 {
+    font-size: clamp(78px, 17vw, 115px);
+    letter-spacing: -3px;
+  }
+
+  .hero-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 30px;
+    gap: 23px;
+  }
+
+  .hero-description {
+    max-width: 270px;
+  }
+
+  .hero-outline {
+    top: 17%;
+    right: -5%;
+    font-size: 65vw;
+  }
+
+  .hero-index {
+    bottom: 85px;
+  }
+
+  .hero-side-label {
+    display: none;
+  }
+
+  .section {
+    padding: 85px 0;
+  }
+
+  .section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    gap: 20px;
+  }
+
+  .section-title {
+    font-size: 65px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat {
+    padding: 23px 12px 23px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .stat:nth-child(odd) {
+    border-right: 0;
+  }
+
+  .stat-number {
+    font-size: 48px;
+  }
+
+  .program-grid,
+  .membership-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .program-card {
+    min-height: 430px;
+  }
+
+  .manifesto {
+    padding: 100px 0;
+  }
+
+  .manifesto h2 {
+    font-size: clamp(58px, 14vw, 90px);
+    letter-spacing: -1px;
+  }
+
+  .price-card {
+    padding: 30px 25px;
+  }
+
+  .cta-box {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px 25px;
+  }
+
+  .cta-box::after {
+    right: 0;
+    top: -40px;
+    font-size: 250px;
+  }
+
+  .cta-box h2 {
+    font-size: 65px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="container nav-inner">
+    <a class="logo" href="#home">
+      REPUBLIC<span>®</span>
+      <small>TRAINING CULTURE</small>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#programs">PROGRAMS</a>
+      <a href="#philosophy">PHILOSOPHY</a>
+      <a href="#membership">MEMBERSHIP</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+
+    <a class="nav-cta" href="#membership">JOIN THE CLUB ↗</a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-outline">01</div>
+
+    <div class="container hero-content">
+      <div class="eyebrow">NOT JUST A GYM. A DIFFERENT STANDARD.</div>
+
+      <h1>
+        BUILT
+        <span class="accent">DIFFERENT<span class="outline">.</span></span>
+      </h1>
+
+      <div class="hero-bottom">
+        <p class="hero-description">
+          No shortcuts. No excuses. Just you, your limits,
+          and the decision to become something more.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="#membership">
+            START YOUR ERA <span>↗</span>
+          </a>
+          <a class="text-link" href="#programs">DISCOVER THE CLUB</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-side-label">STRENGTH IS A MINDSET</div>
+
+    <div class="hero-index">
+      CLUB <span>001</span> / EST. MMXXVI
+    </div>
+
+    <div class="hero-scroll">
+      <span class="scroll-line"></span>
+      SCROLL TO BREAK LIMITS
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+
+  <div class="marquee">
+    <div class="marquee-track" aria-hidden="true">
+      <div class="marquee-item">STRENGTH <span>✳</span> CONDITIONING <span>✳</span> DISCIPLINE <span>✳</span> NO EXCUSES <span>✳</span></div>
+      <div class="marquee-item">STRENGTH <span>✳</span> CONDITIONING <span>✳</span> DISCIPLINE <span>✳</span> NO EXCUSES <span>✳</span></div>
+    </div>
+  </div>
+
+  <!-- INTRO / STATS -->
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading reveal">
+        <div>
+          <div class="eyebrow">THE REPUBLIC STANDARD</div>
+          <h2 class="section-title">MORE THAN<br><span>THE MIRROR.</span></h2>
+        </div>
+
+        <p class="section-copy">
+          Your body is the project. Your mind is the weapon.
+          We build an environment where showing up becomes
+          a habit and progress becomes the standard.
+        </p>
+      </div>
+
+      <div class="stats reveal">
+        <div class="stat">
+          <div class="stat-number"><span data-count="24">0</span>/7</div>
+          <div class="stat-label">Your time. Your rules.</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-number"><span data-count="03">0</span></div>
+          <div class="stat-label">Training disciplines</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-number"><span data-count="100">0</span>%</div>
+          <div class="stat-label">Built around you</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">Room to improve</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+
+  <section class="section programs" id="programs">
+    <div class="container">
+      <div class="section-heading reveal">
+        <div>
+          <div class="eyebrow">FIND YOUR DISCIPLINE</div>
+          <h2 class="section-title">CHOOSE YOUR<br><span>WEAPON.</span></h2>
+        </div>
+
+        <p class="section-copy">
+          Different goals. Different methods.
+          One standard: never settle for the version of you
+          that walked in yesterday.
+        </p>
+      </div>
+
+      <div class="program-grid">
+
+        <article class="program-card reveal">
+          <img
+            src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
+            alt="Strength training"
+            loading="lazy"
+          >
+
+          <span class="program-number">01 / STRENGTH</span>
+
+          <div class="program-content">
+            <h3>IRON<br>DISCIPLINE.</h3>
+            <p>Build strength, master technique, and make every rep count.</p>
+          </div>
+
+          <a class="program-arrow" href="#membership" aria-label="Explore strength training">↗</a>
+        </article>
+
+        <article class="program-card reveal">
+          <img
+            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85"
+            alt="Fitness conditioning"
+            loading="lazy"
+          >
+
+          <span class="program-number">02 / CONDITIONING</span>
+
+          <div class="program-content">
+            <h3>OUTLAST<br>YOURSELF.</h3>
+            <p>Push your endurance and discover what you can really do.</p>
+          </div>
+
+          <a class="program-arrow" href="#membership" aria-label="Explore conditioning">↗</a>
+        </article>
+
+        <article class="program-card reveal">
+          <img
+            src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=85"
+            alt="Personal training"
+            loading="lazy"
+          >
+
+          <span class="program-number">03 / PERSONAL</span>
+
+          <div class="program-content">
+            <h3>YOUR<br>OWN RULES.</h3>
+            <p>Personalized training focused on your goals and your progress.</p>
+          </div>
+
+          <a class="program-arrow" href="#membership" aria-label="Explore personal training">↗</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+
+  <section class="manifesto" id="philosophy">
+    <div class="manifesto-bg"></div>
+
+    <div class="container">
+      <div class="manifesto-content reveal">
+        <div class="eyebrow">A DIFFERENT KIND OF STRONG</div>
+
+        <h2>
+          YOUR ONLY<br>
+          COMPETITION<br>
+          IS <span>YESTERDAY'S</span><br>
+          YOU.
+        </h2>
+
+        <p>
+          Forget the noise. Forget the comparisons.
+          Every session is a chance to become stronger,
+          more focused, and more confident than before.
+          The work is yours. The transformation is yours.
+        </p>
+
+        <br>
+
+        <a class="btn" href="#membership">MAKE YOUR MOVE <span>↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERSHIP -->
+
+  <section class="section" id="membership">
+    <div class="container">
+      <div class="section-heading reveal">
+        <div>
+          <div class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</div>
+          <h2 class="section-title">PICK YOUR<br><span>LEVEL.</span></h2>
+        </div>
+
+        <p class="section-copy">
+          Find the membership that fits your goals.
+          No pressure to be perfect. Just a commitment
+          to keep getting better.
+        </p>
+      </div>
+
+      <div class="membership-grid">
+
+        <article class="price-card reveal">
+          <span class="price-tag">THE BEGINNING</span>
+          <h3>STARTER</h3>
+          <div class="price">EGP -- <small>/ month</small></div>
+          <p class="price-desc">For those ready to begin.</p>
+
+          <ul class="price-features">
+            <li>Gym floor access</li>
+            <li>Strength equipment</li>
+            <li>Locker room access</li>
+            <li>Flexible training hours</li>
+          </ul>
+
+          <a href="#contact" class="price-button">
+            CHOOSE STARTER <span>↗</span>
+          </a>
+        </article>
+
+        <article class="price-card featured reveal">
+          <span class="price-tag">MOST POPULAR</span>
+          <h3>UNLIMITED</h3>
+          <div class="price">EGP -- <small>/ month</small></div>
+          <p class="price-desc">For those who want more.</p>
+
+          <ul class="price-features">
+            <li>Full gym access</li>
+            <li>Group training sessions</li>
+            <li>Fitness assessment</li>
+            <li>Progress tracking</li>
+          </ul>
+
+          <a href="#contact" class="price-button">
+            CHOOSE UNLIMITED <span>↗</span>
+          </a>
+        </article>
+
+        <article class="price-card reveal">
+          <span class="price-tag">THE PERSONAL EDGE</span>
+          <h3>ELITE</h3>
+          <div class="price">EGP -- <small>/ month</small></div>
+          <p class="price-desc">For a more personal approach.</p>
+
+          <ul class="price-features">
+            <li>Full gym access</li>
+            <li>Personal training consultation</li>
+            <li>Individual training plan</li>
+            <li>Dedicated progress reviews</li>
+          </ul>
+
+          <a href="#contact" class="price-button">
+            CHOOSE ELITE <span>↗</span>
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+
+  <section class="final-cta" id="contact">
+    <div class="container">
+      <div class="cta-box reveal">
+        <div>
+          <h2>STOP<br>WAITING.</h2>
+          <p>Your future self is built by what you do today.</p>
+        </div>
+
+        <a class="cta-button" id="contactButton" href="mailto:hello@republicgym.com">
+          CLAIM YOUR SPOT <span>↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="container footer-inner">
+    <a class="logo" href="#home">
+      REPUBLIC<span>®</span>
+      <small>TRAINING CULTURE</small>
+    </a>
+
+    <p class="footer-note">
+      © <span id="year"></span> REPUBLIC. BUILT DIFFERENT.
+    </p>
+
+    <div class="footer-links">
+      <a href="#programs">PROGRAMS</a>
+      <a href="#membership">MEMBERSHIP</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("open");
+
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  menuToggle.textContent = isOpen ? "×" : "☰";
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.textContent = "☰";
+  });
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* Reveal animations */
+
+const revealObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.12
+});
+
+document.querySelectorAll(".reveal").forEach(element => {
+  revealObserver.observe(element);
+});
+
+/* Animated statistics */
+
+const statsObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+
+    const counter = entry.target;
+    const target = Number(counter.dataset.count);
+    const duration = 1300;
+    const start = performance.now();
+
+    function update(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4);
+
+      counter.textContent = String(Math.floor(target * eased)).padStart(
+        target < 10 ? 2 : 1,
+        "0"
+      );
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        counter.textContent = String(target).padStart(
+          target < 10 ? 2 : 1,
+          "0"
+        );
+      }
+    }
+
+    requestAnimationFrame(update);
+    observer.unobserve(counter);
+  });
+}, {
+  threshold: 0.7
+});
+
+document.querySelectorAll("[data-count]").forEach(counter => {
+  statsObserver.observe(counter);
+});
+</script>
+
+</body>
+</html>
+
